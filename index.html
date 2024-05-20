@@ -1,0 +1,2105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div class="container" id="mainForm">
+    <center class="head">
+      <img src="img/logo_main.png" alt="" class="img-responsive" />
+    </center>
+    <form onsubmit="event.preventDefault(); ValidateFORM();">
+      <div class="form-group row">
+        <label for="dateVerification" class="col-sm-2 col-form-label">Date de vérification</label>
+        <div class="col-sm-10">
+          <input type="date" class="form-control" id="dateVerification">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>3. Aménagements à la notice d’instructions du fabricant</label>
+        <p>Dans le cas où le présent PI déroge à certaines prescriptions de la notice d’instructions du fabricant liées
+          à la pression.</p>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="install">Équipement concerné</th>
+              <th class="install">Prescription de la notice d’instructions objet d’un aménagement</th>
+              <th class="install">Mesures compensatoires de surveillance (le cas échéant)</th>
+              <th class="install">Critères d’acceptation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" class="form-control" name="equipmentConcerned1"></td>
+              <td><input type="text" class="form-control" name="prescription1"></td>
+              <td><input type="text" class="form-control" name="measures1"></td>
+              <td><input type="text" class="form-control" name="criteria1"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="form-group">
+        <label>4. Modes de dégradation</label>
+        <p>Les modes de dégradation potentiels sont définis en Annexe II du CTP « Systèmes Frigorifiques ».</p>
+        <p>Autres modes de dégradations : si identifiées par l’exploitant ou issues de l’analyse de la notice.</p>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="install">Équipement concerné</th>
+              <th class="install">Modes de dégradation</th>
+              <th class="install">Origine</th>
+              <th class="install">Conséquences</th>
+              <th class="install">Effets</th>
+              <th class="install">Localisation des zones sensibles</th>
+              <th class="install">Mesures de surveillance</th>
+              <th class="install">Critères d’acceptation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" class="form-control" name="equipmentConcerned2"></td>
+              <td><input type="text" class="form-control" name="degradationMode2"></td>
+              <td><input type="text" class="form-control" name="origin2"></td>
+              <td><input type="text" class="form-control" name="consequences2"></td>
+              <td><input type="text" class="form-control" name="effects2"></td>
+              <td style="display: flex; flex-direction: row; align-items: center; gap: 10px;">
+                <input type="text" class="form-control" name="location2a">
+                <input type="text" class="form-control" name="location2b">
+              </td>
+              <td><input type="text" class="form-control" name="measures2"></td>
+              <td><input type="text" class="form-control" name="criteria2"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="form-group">
+        <label>5. Conditions opératoires critiques limites des équipements (COCL) et les seuils associés</label>
+        <p>Les COCL éventuellement identifiées sont listées dans le tableau ci-dessous</p>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="install">Condition opératoire critique limite</th>
+              <th class="install">Référence de la chaîne de mesure ou de la méthode de mesure</th>
+              <th class="install">Localisation de la mesure</th>
+              <th class="install">Seuil</th>
+              <th class="install">Actions en cas de dépassement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" class="form-control" name="criticalCondition3"></td>
+              <td><input type="text" class="form-control" name="measureReference3"></td>
+              <td style="display: flex; flex-direction: row; gap: 10px; align-items: center;"><input type="text"
+                  class="form-control" name="measureLocation31"><input type="text" class="form-control"
+                  name="measureLocation32"><input type="text" class="form-control" name="measureLocation33"></td>
+              <td><input type="text" class="form-control" name="threshold3"></td>
+              <td><input type="text" class="form-control" name="actions3"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Fichier Annexe à upload</label>
+        <div class="col-sm-10">
+          <input type="file" class="form-control-file" id="fileAnnexe">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Fichier 1</label>
+        <div class="col-sm-10">
+          <input type="file" class="form-control-file" id="file1">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Fichier 2</label>
+        <div class="col-sm-10">
+          <input type="file" class="form-control-file" id="file2">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="periodicity" class="col-sm-2 col-form-label">Périodicité</label>
+        <div class="col-sm-10">
+          <input type="checkbox" class="form-check-input" id="periodicity">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inspectionPeriodique" class="col-sm-2 col-form-label">Inspection Périodique</label>
+        <div class="col-sm-10">
+          <input type="checkbox" class="form-check-input" id="inspectionPeriodique">
+        </div>
+      </div>
+
+      <div class="descPara">
+        <h3>Documents annexes :</h3>
+        <p><span>Annexe 01 :</span> Schéma du système frigorifique indiquant (si besoin) les limites des
+          tuyauteries et rattachement desaccessoires sous pressio</p>
+      </div>
+      <div class="checkBoxContainer">
+        <div class="checkContainerFirst">
+          <input type="checkbox" name="annexe1" id="annexe1Qui">
+          <label for="annexe1Qui">Qui</label>
+          <input type="checkbox" name="annexe1" id="annexe1SansObjet">
+          <label for="annexe1SansObjet">Sans Objet</label>
+        </div>
+      </div>
+
+      <div class="descPara">
+        <p><span>Annexe 02 :</span> Liste des accessoires de sécurité (tableaux des équipements sous pression
+          regroupés par zone de pression et protégés par
+          le même accessoire sous pression).</p>
+      </div>
+      <div class="checkBoxContainer">
+        <div class="checkContainerFirst">
+          <input type="checkbox" name="annexe2" id="annexe2Qui">
+          <label for="annexe2Qui">Qui</label>
+          <input type="checkbox" name="annexe2" id="annexe2SansObjet">
+          <label for="annexe2SansObjet">Sans Objet</label>
+        </div>
+      </div>
+
+      <div class="descPara">
+        <p><span>Annexe 03 :</span> Schéma ou autre indiquant les zones amovibles de dispositif d’isolation.</p>
+      </div>
+      <div class="checkBoxContainer">
+        <div class="checkContainerFirst">
+          <input type="checkbox" name="annexe3" id="annexe3Qui">
+          <label for="annexe3Qui">Qui</label>
+          <input type="checkbox" name="annexe3" id="annexe3SansObjet">
+          <label for="annexe3SansObjet">Sans Objet</label>
+        </div>
+      </div>
+
+      <div class="descPara">
+        <p><span>Annexe 04 :</span> Schéma du système précisant les zones prises en glace en condition normale
+          d’exploitation.</p>
+      </div>
+      <div class="checkBoxContainer">
+        <div class="checkContainerFirst">
+          <input type="checkbox" name="annexe4" id="annexe4Qui">
+          <label for="annexe4Qui">Qui</label>
+          <input type="checkbox" name="annexe4" id="annexe4SansObjet">
+          <label for="annexe4SansObjet">Sans Objet</label>
+        </div>
+      </div>
+
+
+      <div class="form-group text-center">
+        <button type="submit" class="btn btn-success">Valider</button>
+      </div>
+    </form>
+  </div>
+  <form id="myForm" style="display: none;">
+    <div class="container">
+      <center class="head">
+        <img src="img/logo_main.png" alt="" class="img-responsive" />
+      </center>
+      <div class="heading">
+        <!-- first-section -->
+        <div class="first-section">
+          <h3>PLAN D'INSPECTION CONCERNANT UN SYSTÈME FRIGORIFIQUE</h3>
+        </div>
+      </div>
+      <!-- secon-section -->
+      <div class="second mt20">
+        <div class="col-sm-2 border install">
+          <p>Installation :</p>
+        </div>
+        <div class="col-sm-10 border box">
+          <p>Groupe EG 1</p>
+        </div>
+      </div>
+      <!-- third-section -->
+      <div class="col-sm-12 border third-section">
+        <table class="third">
+          <tr class="tableRow">
+            <th class="border">
+              <p>Rédacteur</p>
+            </th>
+            <th width="100" class="border">
+              <p>Coordonées Rédacteur</p>
+            </th>
+            <th width="100" class="border">
+              <p>Date de rédaction</p>
+            </th>
+            <th width="100" class="border">
+              <p>Agence / Siege</p>
+            </th>
+            <th width="100">
+              <p>Adresse Agence / Siege</p>
+            </th>
+            <th width="100" class="nothing"></th>
+          </tr>
+          <tr>
+            <td width="100" class="border">
+              <input type="text" name="fristname" id="firstname" placeholder="Tony CIATTI" value="Tony CIATTI"
+                readonly />
+            </td>
+            <td width="100" class="border">
+              <input type="email" name="yourmail" id="yourmail" placeholder="tony.ciatty@dcrr.fr"
+                value="tony.ciatty@dcrr.fr" readonly />
+            </td>
+            <td width="100" class="border">
+              <input type="date" id="currentDate" class="InputBox currentDate" readonly />
+            </td>
+            <td width="100" class="border nonBg" align="center">
+              <p>SIEGE</p>
+            </td>
+            <td width="100" class="nonBg" align="center">
+              <p>36 Avenue Adrien Raynal, Orly 94310</p>
+            </td>
+            <td width="100" class="nonBg nothing"></td>
+          </tr>
+          <tr>
+            <td width="100" class="border lastBox padR">
+              <p>Date rédaction PI :</p>
+            </td>
+            <td width="100" class="border lastBox">
+              <input type="text" id="currentDate" class="InputBox" readonly />
+            </td>
+            <td width="100" class="border lastBox padR">
+              <p>Référence PI :</p>
+            </td>
+            <td width="100" class="border lastBox">
+              <input type="text" name="refrencePi" id="refrencePi" placeholder=": PI-DV-TC-DCRR-003/1" />
+            </td>
+            <td width="100" class="border lastBox padR">
+              <p>Rev:</p>
+            </td>
+            <td width="100" class="border lastBox nothing">
+              <input type="text" name="number" id="number" placeholder="0" />
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!-- fourth-section -->
+      <div class="col-sm-12 mt20 pad0">
+        <div class="col-sm-2 border box1">
+          <p>Intervention du :</p>
+        </div>
+        <div class="col-sm-10 border callender pad0">
+          <input type="date" name="date" id="date">
+        </div>
+        <table class="fourth">
+          <tr class="tableRowSec">
+            <th>
+              <p>Nom du site</p>
+            </th>
+            <th width="100">
+              <p>Lieu d'intervention</p>
+            </th>
+          </tr>
+
+          <tr>
+            <td width="100">
+              <input type="text" name="fristname" id="firstname"
+                placeholder="HALL 5, Parc des Expositions Paris le Bourget" />
+            </td>
+            <td width="100">
+              <input type="text" name="yourmail" id="yourmail"
+                placeholder="Carrefour Charles Lindbergh, 93350 Le Bourget" />
+            </td>
+          </tr>
+        </table>
+      </div>
+
+
+      <!-- fifth-section -->
+      <div class="col-sm-12 mt20 pad0">
+        <div class="col-sm-2 border boxp">
+          <p>Intervention du :</p>
+        </div>
+        <div class="col-sm-10 border callender pad0">
+          <input type="text" name="text" id="text" placeholder="DV-TC-DCRR-003/1">
+        </div>
+        <div class="col-sm-2 border boxp">
+          <p>Intervention du :</p>
+        </div>
+        <div class="col-sm-10 border callender pad0">
+          <input type="text" name="text" id="text" placeholder="RPT-DV-TC-DCRR-003/1-45055">
+        </div>
+        <div class="col-sm-2 border boxp">
+          <p>Référence du rapport :</p>
+        </div>
+        <div class="col-sm-10 border callender pad0">
+          <input type="text" id="thirdDateBox" class="thirdDateBox" readonly />
+        </div>
+        <div class="col-sm-2 border boxp">
+          <p>Rédigé le :</p>
+        </div>
+        <div class="col-sm-10 border callender pad0">
+          <input type="text" name="text" id="text" placeholder="Tony CIATTI">
+        </div>
+      </div>
+      <!-- sixth-section -->
+      <div class="col-sm-12 border fourth-section">
+        <div class="col-sm-12 border third-section">
+          <table class="third">
+            <tr class="tableRowSec">
+              <th>
+                <p>Date, nom et signature de la personne habilité</p>
+              </th>
+              <th width="100">
+                <p>Date, nom et signature de l'exploitant</p>
+              </th>
+            </tr>
+
+            <tr>
+              <td width="100">
+                <input type="text" name="fristname" id="firstname"
+                  placeholder="HALL 5, Parc des Expositions Paris le Bourget" />
+              </td>
+              <td width="100">
+                <input type="text" name="yourmail" id="yourmail"
+                  placeholder="Carrefour Charles Lindbergh, 93350 Le Bourget" />
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="col-sm-12 border complex-section pad0">
+        <table class="third">
+          <tr class="tableRowSec">
+            <th>
+              <p>Date, nom et signature de la personne habilité</p>
+            </th>
+          </tr>
+          <tr>
+            <td width="100">
+              <input type="text" name="fristname" id="firstname"
+                placeholder="HALL 5, Parc des Expositions Paris le Bourget" />
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- second-container -->
+      <div class="container secondPara">
+        <div class="col-sm-6 secondPara-desc lineText">
+          <div class="secondHeading">
+            <h4>Je sousigné, PRENOM - NOM FONCTION</h4>
+          </div>
+          <p>étant au titre de ce présent PI l'exploitant</p>
+          <p>
+            Désigne et reconnait compétente la personne habilitée ayant rédigée ce
+            Plan d'Inspection (PI) pour l'élaboration d'un plan d'inspection.
+          </p>
+          <ul>
+            <li>
+              M'engage à lui transmettre les comptes rendus de contrôle prévus au
+              PI (si faits par une autre entreprise), les informations relatives à
+              la modification des conditions d'utilisation et aux événements
+              (modification d’un des éléments de l’identification du système entre
+              autre) ou incidents survenus sur les équipements sous pression.
+            </li>
+            <br />
+            <p>
+              Reconnait avoir pris en compte les informations de ce plan
+              d'inspection
+            </p>
+            <li>M'engage a assurer la veille réglementaire</li>
+            <li>
+              M'engage a assurer le suivi des échéances des contrôles
+              réglementaires décrits dans ce PI
+            </li>
+            <li>
+              M'engage à transmettre le retour d'expérience (REX) au moins tous
+              les deux ans. Voir A.10 du CTP « Systèmes Frigorifiques »
+            </li>
+          </ul>
+          <br />
+          <p style="margin-left: 30px">Ce document a été validé par son auteu</p>
+        </div>
+        <div class="col-sm-6 secondPara-desc">
+          <div class="secondHeading2">
+            <h6>
+              Désigne un organisme habilité (OH) pour l'Approbation du Plan
+              d'Inspection (PI).
+            </h6>
+            <ul>
+              <li>
+                M'engage à ne pas avoir introduit de demande d’approbation sur ce
+                système frigorifique auprès d’un autre organisme habilité
+                accrédité
+              </li>
+              <li>
+                M'engage également sur le faite que le plan d’inspection est
+                rédigé en application du CTP mentionné en page 2, sur la base de
+                son plan d’inspection générique
+              </li>
+            </ul>
+            <h6>
+              Si ce PI a été approuvé par un organisme habilité (OH), m'engage à
+              informer l'OH dans le cas :
+            </h6>
+            <ul>
+              <li>
+                de la parution d’une nouvelle version du Cahier Technique
+                Professionnel pour le suivi en service des équipements
+                frigorifques sous pression
+              </li>
+              <li>de la modification des conditions d’exploitation</li>
+              <li>d’incidents ou d’évènements</li>
+              <li>des résultats des actions de surveillance prévues au PI</li>
+              <li>d’interventions (notables ou non notables)</li>
+              <li>
+                d’ajout de modes de dégradation non cités dans le CTP « Systèmes
+                frigorifiques »
+              </li>
+              <li>de modification de la liste des ESP soumis du système</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- third-container -->
+      <div class="container">
+        <div class="col-sm-12 description">
+          <b>1 Définition de la famille :</b><br /><br />
+          <h6>SYSTEMES FRIGORIFIQUES :</h6>
+          <div class="desc-part">
+            <p>
+              Unité complète prête à l’emploi contenant du fluide frigorigène,
+              utilisée en réfrigération, conditionnement de l’air ou pompe à
+              chaleur, composée d’équipements et/ou d’ensembles frigorifiques sous
+              pression assemblés entre eux pouvant se présenter sous la forme d’un
+              ensemble ou d’une installation frigorifique
+            </p>
+            <h6>CAHIER TECHNIQUE PROFESSIONNEL APPLIQUE :</h6>
+            <p>
+              Cahier Technique Professionnel pour le suivi en service des systèmes
+              frigorifiques sous pression du 23 Juillet 2020, approuvé par la
+              Décision BSERR n°20-037 du 19 août 2020
+            </p>
+          </div>
+          <br />
+          <b> 2 Caractéristiques de l’équipement ou des équipement(s) </b>
+        </div>
+        <div class="col-sm-12 mt20 pad0" align="center">
+          <div class="checkBoxFirst">
+            <input type="checkbox" name="" id="">
+            <p>identification</p>
+          </div>
+          <div class="col-sm-2 border boxp">
+            <p>Type :</p>
+          </div>
+          <div class="col-sm-10 border callender pad0 textCenter">
+            <p>Ensemble</p>
+          </div>
+          <div class="col-sm-2 border boxp">
+            <p>Identification :</p>
+          </div>
+          <div class="col-sm-10 border callender pad0">
+            <p>Groupe EG</p>
+          </div>
+          <div class="col-sm-2 border boxp">
+            <p>Fabricant :</p>
+          </div>
+          <div class="col-sm-10 border callender pad0">
+            <p>CARRIER</p>
+          </div>
+          <div class="col-sm-2 border boxp">
+            <p>Modèle :</p>
+          </div>
+          <div class="col-sm-10 border callender pad0">
+            <p>30GX-267-A0322-P</p>
+          </div>
+          <div class="col-sm-2 border boxp">
+            <p>N° série :</p>
+          </div>
+          <div class="col-sm-10 border callender pad0">
+            <p><b>12Z419310</b></p>
+          </div>
+          <div class="col-sm-2 border boxp">
+            <p>Désignation :</p>
+          </div>
+          <div class="col-sm-10 border callender pad0">
+            <p>
+              Ensemble - Groupe EG</p>
+          </div>
+          <div class="col-sm-2 border boxp">
+            <p>Fluide Frigorigène :</p>
+          </div>
+          <div class="col-sm-10 border callender pad0">
+            <p>
+              R134A</p>
+          </div>
+          <div class="col-sm-2 border boxp">
+            <p>Groupe</p>
+          </div>
+          <div class="col-sm-10 border callender pad0">
+            <p>Groupe 2</p>
+          </div>
+          <div class="col-sm-2 border boxp">
+            <p>Toxique :</p>
+          </div>
+          <div class="col-sm-10 border callender pad0">
+            <p><b>
+                Non Toxique</b></p>
+          </div>
+        </div>
+        <!-- -- -->
+        <div class="col-sm-12 mt20 pad0" align="center">
+          <div class="col-sm-6 pad0 half-Desc">
+            <div class="half-heading box1">
+              <p>
+                Caratéristiques de constructio</p>
+            </div>
+            <div class="col-sm-12 pad0">
+              <table class="complexTable textCenter">
+                <tr>
+                  <th class="border box1 toughHeading"></th>
+                  <th class="borderrr">BP</th>
+                  <th class="borderrr">MP</th>
+                  <th class="borderrr">HP</th>
+                </tr>
+                <tr>
+                  <td class="borderrr box1 BoldText">
+                    PS Mini (bar)</td>
+                  <td class="borderrr">0,9</td>
+                  <td class="borderrr"></td>
+                  <td class="borderrr">0,9</td>
+                </tr>
+                <tr>
+                  <td class="borderrr box1 BoldText">PS Maxi (bar)</td>
+                  <td class="borderrr">25</td>
+                  <td class="borderrr"></td>
+                  <td class="borderrr">25</td>
+                </tr>
+                <tr>
+                  <td class="borderrr box1 BoldText">TS Mini (°C)</td>
+                  <td class="borderrr">20</td>
+                  <td class="borderrr"></td>
+                  <td class="borderrr">20</td>
+                </tr>
+                <tr>
+                  <td class="borderrr box1 BoldText">TS Mini (°C)</td>
+                  <td class="borderrr">80</td>
+                  <td class="borderrr"></td>
+                  <td class="borderrr">80</td>
+                </tr>
+                <tr>
+                  <td class="borderbox1 BoldText box1 borderrr">Huile</td>
+                  <td class="borderrr"></td>
+                  <td class="borderrr"></td>
+                  <td class="borderrr"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="col-sm-6 pad0">
+            <div class="half-heading box1 half-Desc">
+              <p>
+                Caratéristiques d'utilisatio</p>
+            </div>
+            <div class="col-sm-12 pad0">
+              <table class="complexTable textCenter">
+                <tr>
+                  <th class="borderrr box1 toughHeading2"></th>
+                  <th class="borderrr">BP</th>
+                  <th class="borderrr">MP</th>
+                  <th class="borderrr">HP</th>
+                </tr>
+                <tr>
+                  <td class="borderrr box1 BoldText">
+                    Pression (bar)</td>
+                  <td class="borderrr">4,19</td>
+                  <td class="borderrr"></td>
+                  <td class="borderrr">10,59</td>
+                </tr>
+                <tr>
+                  <td class="border box1 BoldText borderrr">
+                    Température (°C)</td>
+                  <td class="borderrr">17</td>
+                  <td class="borderrr"></td>
+                  <td class="borderrr">45</td>
+                </tr>
+                <tr>
+                  <td class="box1 BoldText borderrr">
+                    Température exterieure (°C)</td>
+                  <td class="borderrr">18</td>
+                  <td class="borderrr"></td>
+                  <td class="borderrr"></td>
+                </tr>
+                <tr>
+                  <td class="box1 BoldText borderrr">
+                    Huile</td>
+                  <td></td>
+                  <td></td>
+                  <td class="huile"></td>
+                </tr>
+                <tr>
+                  <td class="borderbox1 BoldText box1 empty emptyQ"></td>
+                  <td class="empty"></td>
+                  <td class="empty"></td>
+                  <td class="empty"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-sm-12 mt20 pad0">
+          <p class="const"> Constituant</p>
+          <div class="tableBox">
+            <table class="tableDesc">
+              <tr class="complexTable">
+                <th class="borderrr box1 toughHeadingZ">
+                  <p>Fabricant</p>
+                </th>
+                <th class="borderrr box1 toughHeadingZ">
+                  <p>Type</p>
+                </th>
+                <th class="borderrr toughHeadingY box1">
+                  <p>Volume(L)ou DN</p>
+                </th>
+                <th class="borderrr box1 toughHeadingZ">
+                  <p>PS
+                    (bar)</p>
+                </th>
+                <th class="borderrr toughHeadingX box1">
+                  <p>Chapitre
+                    du CTP</p>
+                </th>
+                <th class="borderrr box1 toughHeadingZ">
+                  <p>Catégorie</p>
+                </th>
+                <th class="borderrr toughHeadingX box1">
+                  <p>DMS</p>
+                </th>
+                <th class="toughHeading2 borderrr box1">
+                  <p>
+                    Repère ou Identification de
+                    l’accessoire de
+                    sécurit</p>
+                </th>
+              </tr>
+              <tr class="fullBox borderrr box1 fullBoxData" align="right">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Récipient</td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+              </tr>
+              <tr class="halfBox-data" align="center">
+                <td class="borderrr">
+                  <p>CARRIER</p>
+                </td>
+                <td class="borderrr">
+                  <p>Bouteille Réservoir
+                    Liquide</p>
+                </td>
+                <td class="borderrr toughHeadingY">
+                  <p>211</p>
+                </td>
+                <td class="borderrr">
+                  <p>25</p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p>C</p>
+                </td>
+                <td class="borderrr">
+                  <p>IV</p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p>Non</p>
+                </td>
+                <td class="toughHeading2 borderrr">
+                  <p>Pressostat HP</p>
+                </td>
+              </tr>
+              <!-- -- -->
+              <tr class="halfBox-data" align="center">
+                <td class="borderrr pad0">
+                  <p>CARRIER</p>
+                </td>
+                <td class="borderrr">
+                  <p>Bouteille Réservoir
+                    Liquide</p>
+                </td>
+                <td class="borderrr toughHeadingY">
+                  <p>133</p>
+                </td>
+                <td class="borderrr">
+                  <p>25</p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p>C</p>
+                </td>
+                <td class="borderrr">
+                  <p>IV</p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p>Non</p>
+                </td>
+                <td class="toughHeading2 borderrr">
+                  <p>Pressostat HP</p>
+                </td>
+              </tr>
+              <!-- -- -->
+              <tr class="halfBox-data" align="center">
+                <td class="borderrr">
+                  <p>CARRIER</p>
+                </td>
+                <td class="borderrr">
+                  <p>Bouteille Réservoir
+                    Liquide</p>
+                </td>
+                <td class="borderrr toughHeadingY">
+                  <p>133</p>
+                </td>
+                <td class="borderrr">
+                  <p>25</p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p>C</p>
+                </td>
+                <td class="borderrr">
+                  <p>IV</p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p>Non</p>
+                </td>
+                <td class="toughHeading2 borderrr">
+                  <p>Pressostat HP</p>
+                </td>
+              </tr>
+              <!-- -- -->
+              <tr class="halfBox-data" align="center">
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingY">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p></p>
+                </td>
+                <td class="toughHeading2 borderrr">
+                  <p></p>
+                </td>
+              </tr>
+              <!-- -- -->
+              <tr class="halfBox-data" align="center">
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingY">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p></p>
+                </td>
+                <td class="toughHeading2 borderrr">
+                  <p></p>
+                </td>
+              </tr>
+              <!-- -- -->
+              <tr class="halfBox-data" align="center">
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingY">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p></p>
+                </td>
+                <td class="toughHeading2 borderrr">
+                  <p></p>
+                </td>
+              </tr>
+              <!-- -- -->
+              <tr class="halfBox-data" align="center">
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingY">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p></p>
+                </td>
+                <td class="toughHeading2 borderrr">
+                  <p></p>
+                </td>
+              </tr>
+              <!-- -- -->
+              <tr class="halfBox-data" align="center">
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingY">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p></p>
+                </td>
+                <td class="toughHeading2 borderrr">
+                  <p></p>
+                </td>
+              </tr>
+              <tr class="fullBox borderrr box1 fullBoxData" align="right">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Tuyauteri</td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+              </tr>
+              <!-- -- -->
+              <tr class="halfBox-data" align="center">
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingY">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p></p>
+                </td>
+                <td class="toughHeading2 borderrr">
+                  <p></p>
+                </td>
+              </tr>
+              <!-- -- -->
+              <tr class="halfBox-data" align="center">
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingY">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p></p>
+                </td>
+                <td class="toughHeading2 borderrr">
+                  <p></p>
+                </td>
+              </tr>
+              <!-- -- -->
+              <tr class="halfBox-data" align="center">
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingY">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p></p>
+                </td>
+                <td class="toughHeading2 borderrr">
+                  <p></p>
+                </td>
+              </tr>
+              <!-- -- -->
+              <tr class="halfBox-data" align="center">
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingY">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p></p>
+                </td>
+                <td class="toughHeading2 borderrr">
+                  <p></p>
+                </td>
+              </tr>
+              <!-- -- -->
+              <tr class="halfBox-data" align="center">
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingY">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingX">
+                  <p></p>
+                </td>
+                <td class="toughHeading2 borderrr">
+                  <p></p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="container pad0">
+          <div class="fourth-Container">
+            <div class="col-sm-12 box1 mt20 border fourthDesc" align="center">
+              <p>Accessoires de sécurité :</p>
+            </div>
+          </div>
+          <div class="tableBox">
+            <table class="tableDesc fourthTable">
+              <tr class="complexTable">
+                <th class="borderrr box1 toughHeading">
+                  <p>Fabricant</p>
+                </th>
+                <th class="borderrr box1">
+                  <p>Repère sur plan</p>
+                </th>
+                <th class="borderrr box1 toughHeading4">
+                  <p>Modèle</p>
+                </th>
+                <th class="border box1 toughHeadingZ">
+                  <p>Tarage ou
+                    Réglage
+                    (bar)</p>
+                </th>
+                <th class="border box1 toughHeading3">
+                  <div class="flexData">
+                    <p>Type</p>
+                    <p>Nombre</p>
+                  </div>
+                </th>
+              </tr>
+              <!-- -- -->
+              <tr class="complexTable complexTable1">
+                <td class="borderrr toughHeading">
+                  <p>ALCO CONTROL</p>
+                </td>
+                <td class="borderrr">
+                  <p>Compresseur HP (PZHH)</p>
+                </td>
+                <td class="borderrr">
+                  <p>PSC-B6S</p>
+                </td>
+                <td class="borderrr toughHeadingZ">
+                  <p>21,8</p>
+                </td>
+                <td class="borderrr">
+                  <div class="flexData">
+                    <p>Pressostat</p>
+                    <p>3</p>
+                  </div>
+                </td>
+              </tr>
+              <!-- -- -->
+              <tr class="complexTable complexTable1">
+                <td class="borderrr toughHeading">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingZ">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <div class="flexData">
+                    <p></p>
+                    <p></p>
+                  </div>
+                </td>
+              </tr>
+              <!-- -- -->
+              <tr class="complexTable complexTable1">
+                <td class="borderrr toughHeading">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingZ">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <div class="flexData">
+                    <p></p>
+                    <p></p>
+                  </div>
+                </td>
+              </tr>
+              <!-- -- -->
+              <tr class="complexTable complexTable1">
+                <td class="borderrr toughHeading">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingZ">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <div class="flexData">
+                    <p></p>
+                    <p></p>
+                  </div>
+                </td>
+              </tr>
+              <!-- -- -->
+              <tr class="complexTable complexTable1">
+                <td class="borderrr toughHeading">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingZ">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <div class="flexData">
+                    <p></p>
+                    <p></p>
+                  </div>
+                </td>
+              </tr>
+              <!-- -- -->
+              <tr class="complexTable complexTable1">
+                <td class="borderrr toughHeading">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingZ">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <div class="flexData">
+                    <p></p>
+                    <p></p>
+                  </div>
+                </td>
+              </tr>
+              <!-- -- -->
+              <tr class="complexTable complexTable1">
+                <td class="borderrr toughHeading">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingZ">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <div class="flexData">
+                    <p></p>
+                    <p></p>
+                  </div>
+                </td>
+              </tr>
+              <!-- -- -->
+              <tr class="complexTable complexTable1">
+                <td class="borderrr toughHeading">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingZ">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <div class="flexData">
+                    <p></p>
+                    <p></p>
+                  </div>
+                </td>
+              </tr>
+              <!-- -- -->
+              <tr class="complexTable complexTable1">
+                <td class="borderrr toughHeading">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <p></p>
+                </td>
+                <td class="borderrr toughHeadingZ">
+                  <p></p>
+                </td>
+                <td class="borderrr">
+                  <div class="flexData">
+                    <p></p>
+                    <p></p>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <p align="center"><b><em>Note : Pour les tuyauteries : schéma frigorifique (ou synoptique) avec repérage
+                  photo
+                  ou leur schéma isométrique. (Annexe 01)</em></b></p>
+          </div>
+          <div class="eight-section">
+            <div class="descPara">
+              <h4>3 Aménagements à la notice d’instructions du fabricant</h4>
+              <p>Dans le cas où le présent PI déroge à certaines prescriptions de la notice d’instructions du fabricant
+                liées à la pression.</p>
+            </div>
+            <div class="tableBox">
+              <table class="tableDesc">
+                <tr class="complexTable complexTable1">
+                  <th class="borderrr box1 toughHeading4">
+                    <p>Équipement concerné</p>
+                  </th>
+                  <th class="borderrr box1 toughHeading4">
+                    <p>Prescription de la notice
+                      d’instructions objet d’un
+                      aménagement</p>
+                  </th>
+                  <th class="borderrr toughHeading2 box1">
+                    <p>Mesures
+                      compensatoires de
+                      surveillance
+                      <br>
+                      <span>(le cas échéant)</span>
+                    </p>
+                  </th>
+                  <th class="toughHeading4 borderrr box1">
+                    <p>
+                      Critères d’acceptation</p>
+                  </th>
+                </tr>
+                <!-- -- -->
+                <tr class="complexTable complexTable1 tabhleHeight">
+                  <td class="borderrr toughHeading4 pad0">
+                    <input type="text" name="text" id="Équipementconcerné">
+                  </td>
+                  <td class="borderrr toughHeading4">
+                    <input type="text" name="text" id="Prescriptionde">
+                  </td>
+                  <td class="borderrr toughHeading2">
+                    <input type="text" name="text" id="Mesurescompensatoires">
+                  </td>
+                  <td class="toughHeading4 borderrr">
+                    <input type="text" name="text" id="Critèresdacceptation">
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="descPara">
+              <h4>4 Modes de dégradation :</h4>
+              <p>Les modes de dégradation potentiels sont définis en Annexe II du CTP « Systèmes Frigorifiques »</p>
+              <p>Autres modes de dégradations : si identifiées par l’exploitant ou issus de l’analyse de la notice</p>
+            </div>
+            <div class="tableBox">
+              <table class="tableDesc">
+                <tr class="complexTable complexTable1">
+                  <th class="borderrr box1">
+                    <p>Equipement concerné</p>
+                  </th>
+                  <th class="borderrr box1">
+                    <p>Modes de
+                      dégradation</p>
+                  </th>
+                  <th class="borderrr box1">
+                    <p>Origine
+                      <br>
+                    </p>
+                  </th>
+                  <th class="borderrr box1">
+                    <p>
+                      Conséquences</p>
+                  </th>
+                  <th class="borderrr box1">
+                    <p>Effets</p>
+                  </th>
+                  <th class="borderrr box1">
+                    <p>Localisation des zones
+                      sensibles</p>
+                  </th>
+                  <th class="borderrr box1">
+                    <p>Mesures de
+                      surveillance
+                    </p>
+                  </th>
+                  <th class="borderrr box1">
+                    <p>
+                      Critères d’acceptation</p>
+                  </th>
+                </tr>
+                <!-- -- -->
+                <tr class="complexTable complexTable1 tabhleHeight">
+                  <td class="borderrr toughHeading4 pad0">
+                    <input type="text" name="text" id="Equipementconcerné4">
+                  </td>
+                  <td class="borderrr toughHeading4">
+                    <input type="text" name="text" id="Modesdedégradation4">
+                  </td>
+                  <td class="borderrr toughHeading2">
+                    <input type="text" name="text" id="Origine4">
+                  </td>
+                  <td class="toughHeading4 borderrr">
+                    <input type="text" name="text" id="Conséquences4">
+                  </td>
+                  <td class="borderrr toughHeading4 pad0">
+                    <input type="text" name="text" id="Effets4">
+                  </td>
+                  <td class="borderrr toughHeading4">
+                    <div class="flexData flexInputBox">
+                      <input type="text" name="text" id="Localisationdeszonessensibles41">
+                      <input type="text" name="text" id="Localisationdeszonessensibles42">
+                    </div>
+                  </td>
+                  <td class="borderrr toughHeading2">
+                    <input type="text" name="text" id="Mesuresdesurveillance4">
+                  </td>
+                  <td class="toughHeading4 borderrr">
+                    <input type="text" name="text" id="Critèresdacceptation4">
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <!-- -- -->
+            <div class="descPara">
+              <h4>5 Conditions opératoires critiques limites des équipements (COCL) et les seuils associés.</h4>
+              <p>Les COCL éventuellement identifiées sont listées dans le tableau ci-dessous</p>
+            </div>
+            <div class="tableBox">
+              <table class="tableDesc">
+                <tr class="complexTable complexTable1">
+                  <th class="borderrr box1 toughHeading">
+                    <p>Condition opératoire
+                      critique limite</p>
+                  </th>
+                  <th class="borderrr box1 toughHeading2">
+                    <p>Référence de la
+                      chaîne de
+                      mesure ou de la
+                      méthode de
+                      mesure</p>
+                  </th>
+                  <th class="borderrr box1 toughHeading4">
+                    <p>Localisation de la mesure</p>
+                  </th>
+                  <th class="border box1 toughHeadingZ">
+                    <p>Seuil
+                    </p>
+                  </th>
+                  <th class="border box1 toughHeading3">
+                    <p>Actions en cas de
+                      dépassement</p>
+                  </th>
+                </tr>
+                <!-- -- -->
+                <tr class="complexTable complexTable1 tabhleHeight">
+                  <td class="borderrr toughHeading">
+                    <input type="text" name="text" id="Conditionopératoirecritiquelimite5">
+                  </td>
+                  <td class="borderrr toughHeading2">
+                    <input type="text" name="text" id="Référence5">
+                  </td>
+                  <td class="borderrr toughHeading4">
+                    <div class="flexData flexInputBox1">
+                      <p> <input type="text" name="text" id="Localisationdelamesure51"></p>
+                      <p> <input type="text" name="text" id="Localisationdelamesure52"></p>
+                      <p> <input type="text" name="text" id="Localisationdelamesure53"></p>
+                    </div>
+                  </td>
+                  <td class="borderrr toughHeadingZ">
+                    <input type="text" name="text" id="Seuil5">
+                  </td>
+                  <td class="borderrr toughHeading3">
+                    <input type="text" name="text" id="Actions5">
+                  </td>
+                </tr>
+                <!-- -- -->
+              </table>
+            </div>
+            <div class="descPara">
+              <h4>6 Action de surveillance</h4>
+              <p>Un schéma du système précise les zones prises en glace en condition normale d’exploitation. (Annexe 4)
+              </p>
+              <p>Les zones prises en glace ne requièrent aucun contrôle supplémentaire</p><br>
+              <h4>6.1 Vérification initiale</h4>
+              <p>La préparation du système à cette Visite Initiale se fait selon le § A.1.4. du CTP « Systèmes
+                Frigorifiques>></p>
+              <p>La VI est réalisée selon les dispositions du § A.1 du CTP « Systèmes Frigorifiques » auxquelles se
+                rajoutent, le cas</p>
+              <p>échéant, les mesures de surveillance complémentaires listées dans le tableau des points 3 et 4
+                ci-dessus.
+              </p><br>
+              <h4>6.2 Inspection périod</h4>
+              <p>La préparation du système à cette Inspection se fait selon le § A.2.4. du CTP « Systèmes Frigorifique
+              </p>
+              <p>L’IP est réalisée selon les dispositions du § A.2 du CTP « Systèmes Frigorifiques » auxquelles se
+                rajoutent, le</p>
+              <p>échéant, les mesures de surveillance complémentaires listées dans le tableau des points 3 et 4
+                ci-dessus.
+              </p>
+            </div>
+          </div>
+          <div class="ninth-Section">
+            <div class="col-sm-12 box1 border ninthDesc" align="center">
+              <h4>INSPECTION PERIODIQUE</h4>
+            </div>
+            <div class="col-sm-6 tableBox pad0 mt5">
+              <table class="tableDesc complexTable1">
+                <tr class="complexTable box1 equipement">
+                  <th>
+                    <p>EQUIPEMENTS</p>
+                  </th>
+                </tr>
+                <tr class="neutral borderrr">
+                  <td>
+                    <p>s.
+                      Récipients chapitre C</p>
+                    <p>(24 ou 48 mois maximum selon § C.3.2 du CTP « systèmes frigorifique>>)</p>
+                  </td>
+                </tr>
+                <tr class="box1 borderrr">
+                  <td>
+                    <p>
+                      Système frigorifique, le cas écheant</p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <!-- -- -->
+            <div class="col-sm-6 tableBox pad0 mt5">
+              <table class="tableDesc complexTable1">
+                <tr class="complexTable box1 equipement">
+                  <th>
+                    <p>PÉRIODICITÉS RETENUES</p>
+                  </th>
+                </tr>
+                <tr class="neutral border">
+                  <td>
+                    <div class="checkBoxSecond" align="center">
+                      <div>
+                        <input type="checkbox" name="mois" id="mois">
+                        <label for="">24 mois</label>
+                      </div>
+                      <div><input type="checkbox" name="mois" id="mois">
+                        <label for="">mois</label>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="borderrr">
+                  <td>
+                    <div class="checkBoxSecond2" align="center">
+                      <div>
+                        <input type="checkbox" name="mois" id="mois">
+                        <label for="">24 mois</label>
+                      </div>
+                      <div><input type="checkbox" name="mois" id="mois">
+                        <label for="">mois</label>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="container pad0">
+            <div class="col-sm-12 pad0">
+              <div class="descPara">
+                <h4>6.3 Requalification périodique</h4>
+                <p>La préparation du système à cette Requalification se fait selon le §A.3.6. du CTP « Systèmes
+                  frigorifiques »</p>
+                <p>La RP est réalisée selon les dispositions du § A.3 du CTP « Systèmes Frigorifiques » auxquelles se
+                  rajoutent, le cas</p>
+                <p>échéant, les mesures de surveillance complémentaires listées dans le tableau des points 3 et 4
+                  ci-dessus.</p>
+              </div>
+              <div class="ninth-Section">
+                <div class="col-sm-12 box1 border ninthDesc" align="center">
+                  <h4>REQUALIFICATION PERIODIQUE</h4>
+                </div>
+                <div class="col-sm-6 tableBox pad0 mt5">
+                  <table class="tableDesc complexTable1">
+                    <tr class="complexTable box1 equipement">
+                      <th>
+                        <p>EQUIPEMENTS</p>
+                      </th>
+                    </tr>
+                    <tr class="neutral borderrr">
+                      <td>
+                        <p>
+                          Récipients</p>
+                        <p>(6 ans maxi (fluide toxique) / 12 ans maxi (autres fluides))</p>
+                      </td>
+                    </tr>
+                    <tr class="box1 borderrr">
+                      <td>
+                        <p>
+                          Système frigorifique, le cas écheant</p>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <!-- -- -->
+                <div class="col-sm-6 tableBox pad0 mt5">
+                  <table class="tableDesc complexTable1">
+                    <tr class="complexTable box1 equipement">
+                      <th>
+                        <p>PÉRIODICITÉS RETENUES</p>
+                      </th>
+                    </tr>
+                    <tr class="neutral border">
+                      <td>
+                        <div class="checkBoxSecond" align="center">
+                          <div>
+                            <input type="checkbox" name="mois" id="mois">
+                            <label for="">6 ans</label>
+                          </div>
+                          <div><input type="checkbox" name="mois" id="mois">
+                            <label for="">12 ans</label>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="borderrr">
+                      <td>
+                        <div class="checkBoxSecond2" align="center">
+                          <div>
+                            <input type="checkbox" name="mois" id="mois">
+                            <label for="">24 mois</label>
+                          </div>
+                          <div><input type="checkbox" name="mois" id="mois">
+                            <label for="">mois</label>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="descPara headX">
+              <h3>Documents annexes :</h3>
+              <p><span>Annexe 01 :</span> : Schéma du système frigorifique indiquant (si besoin) les limites des
+                tuyauteries et rattachement desaccessoires sous pressio</p>
+            </div>
+            <div class="checkBoxContainer">
+              <div class="checkContainerFirst">
+                <input type="checkbox" name="" id="">
+                <label for="">Qui</label>
+                <input type="checkbox" name="" id="">
+                <label for="">Sans Objcet</label>
+              </div>
+            </div>
+            <div class="descPara headX headY">
+              <p><span>Annexe 02 :</span> Liste des accessoires de sécurité (tableaux des équipements sous pression
+                regroupés par zone de pression et protégés par
+                le même accessoire sous pression).</p>
+            </div>
+            <div class="checkBoxContainer">
+              <div class="checkContainerFirst">
+                <input type="checkbox" name="" id="">
+                <label for="">Qui</label>
+                <input type="checkbox" name="" id="">
+                <label for="">Sans Objcet</label>
+              </div>
+            </div>
+            <div class="descPara headX headY">
+              <p><span>Annexe 03 :</span>3 : Schéma ou autre indiquant les zones amovibles de dispositif d’isolation.
+              </p>
+            </div>
+            <div class="checkBoxContainer">
+              <div class="checkContainerFirst">
+                <input type="checkbox" name="" id="">
+                <label for="">Qui</label>
+                <input type="checkbox" name="" id="">
+                <label for="">Sans Objcet</label>
+              </div>
+            </div>
+            <div class="descPara headX headY">
+              <p><span>Annexe 04 :</span> 4 : Schéma du système précisant les zones prises en glace en condition normale
+                d’exploitation.</p>
+            </div>
+            <div class="checkBoxContainer">
+              <div class="checkContainerFirst">
+                <input type="checkbox" name="" id="">
+                <label for="">Qui</label>
+                <input type="checkbox" name="" id="">
+                <label for="">Sans Objcet</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="description">
+          <div class="heading2">
+            <h1>MEMO D’APPLICATION DU PLAN D’INSPECTION</h1>
+          </div>
+          <div class="bigDesc">
+            <h3>A. <u> VISITE INITIALE</u></h3>
+            <p> <span>Périodicité :</span>Sans.</p>
+            <span>Situations imposant une Visite Initiale :</span>
+            <p>- avant la date de première mise en service du système frigorifique ou d’un équipement remplacé ou
+              ajoute.
+            </p>
+            <p>- suite à une intervention importante</p>
+
+            <span>Qualification pour le contrôle :</span>
+            <p>Personne habilitée au titre du CTP (traçabilité de la compétence)</p>
+
+            <p> <span>Périodicité :</span> selon le § A.1..</p>
+            <p>
+              Sans dépose des revêtements ; accès à tous les équipements et accessoires de sécurité, accès et visibilité
+              des marques d’identité ou plaques fabricant
+              (Selon les dispositions du § A.1 + compléments)</p>
+
+            <span>Vérification de la présence (existence) du dossier d’exploitation;</span>
+            <p>(Existence signifie que les différents documents du dossier d’exploitation ont été passés en revue. En
+              particulier preuve de DMS postérieure à 2005 ;
+              les différents rapports de VI/CMS depuis la dernière requalification)</p>
+
+            <span>Opérations de contrôle de l’équipement :</span>
+            <p>Vérification de l’identité et de sa concordance avec le dossier d’exploitation ;
+            </p>
+            <p>Contrôle visuel externe pour détecter les éventuels dommages subis : chocs, déformation, corrosion ;</p>
+            <p>Vérification du respect des dispositions de la notice d’instructions avec une attention sur l’état et
+              l’existence des supports par rapport à leur notice
+              d’instructions ; (toute déviation par rapport aux notices doit être tracée et justifiée par l’exploitant)
+              Vérification de la présence et de la capacité à
+              fonctionner des accessoires de sécurité. Il s’agit de vérifier :</p>
+            <p class="bigPara"> Pour une soupape, que le système de bridage a bien été enlevé et que le système
+              d’échappement n’est pas obturée ;</p>
+            <p><em>(montage conforme à
+                la notice de la soupape ; absence de tout dispositif interdisant le fonctionnement de la soupape +
+                vérification de la PDO)</em></p>
+            <p class="bigPara"> Pressostat de sécurité HP, que celui-ci est bien raccordée. (Valeur de déclenchement,
+              aptitude à fonctionner) Dans le cas d’une installation, se
+            </p>
+            <p>conformer aux dispositions du §A.7.1 relatives aux accessoires de sécurité; (document de justification de
+              l’adéquation, déclaration CE + notice ;
+              justificatif de seuil de déclenchement)</p>
+            <p>
+              Vérification des dispositions prises pour protéger le personnel contre les émissions dangereuses
+              susceptibles d’être rejetées par les dispositifs de
+              limitation de pression (soupapes)</p>
+            <span>
+              Constatation (contrôle visuel) de la possibilité de procéder à la vérification et au remplacement
+              (démontage) des
+              accessoires de sécurité lors des inspections et requalifications périodiques.</span>
+            <p>
+              Note : sous réserve de disposer de tous les points satisfaisants le rapport de visite initiale vaut
+              attestation de contrôle de</p>
+            <p>
+              mise en service (si accompagné de la preuve du DMS lorsque requis)</p>
+            <h3> B.<u>INSPECTIONS PERIODIQUES</u></h3>
+            <p><span>Périodicité :</span> 24 /48 mois à définir (selon chapitres B, C, D et E.4.2 du CTP (périodicité
+              unique possible sur décision de l’exploitant))</p>
+            <p><span>Qualification pour le contrôle : </span> Personne habilitée au titre du CTP (traçabilité de la
+              compétence)</p>
+            <p><span>Préparation de l’équipement :</span> Selon le § A.2. Sans dépose des revêtements – parties
+              amovibles
+              retirées ; accès à tous les équipements et
+              accessoires de sécurité, accès et visibilité des marques d’identité ou plaques fabricant.</p>
+            <p>Les zones prises en glace en conditions normales de fonctionnement sont identifiées sur le circuit.</p>
+            <p><em>(La liste des parties amovibles de l’isolation et les zones prises en glace en conditions normales de
+                fonctionnement sont identifiées sur un schéma du
+                circuit)</em></p>
+            <p>(Selon les dispositions du § A.2 + compléments)</p>
+            <p><span>Vérification documentaire</span>(dossier d’exploitation)</p>
+            <ul>
+              <li>Vérifier la présence et l’exactitude des documents ;</li>
+              <li>Prendre notamment connaissance des anomalies détectées lors de la précédente échéance règlementaire,
+                ou
+                éventuellement survenues</li>
+            </ul>
+            <p>depuis cette échéance, des mesures correctives mises en œuvre et des modifications apportées (par exemple
+              remplacement d’accessoires de
+              sécurité, réparations ou modifications sur le circuit frigorifique, changement des conditions de
+              fonctionnement, changement de fluide
+              frigorigène, etc.). (Attention, certaines modifications citées imposent la révision du plan d’inspection)
+            </p>
+            <span>Contrôles visuels</span>
+            <p>Pour les équipements, leurs accessoires de sécurité et leurs accessoires sous pression</p>
+            <ul>
+              <li>tout défaut du calorifuge : glace en surface ; condensation avec ruissellement; chocs externes ;</li>
+              <li>tout défaut de la paroi de l’équipement non calorifugé : corrosion atmosphérique (absence de perte
+                d’épaisseur), chocs externes,</li>
+            </ul>
+            <p>trace de fuite de fluide frigorigène ou d’huile ;</p>
+            <ul>
+              <li>tout défaut du supportage de l’équipement ;</li>
+              <li>toute vibration anormale.</li>
+            </ul>
+            <span>Contrôles des accessoires de sécurité</span>
+            <ul>
+              <li>Correspondance avec les types et modèles déclarés ou prévus à l’origine ou, en cas de remplacement des
+                accessoires de sécurité, justification</li>
+            </ul>
+            <p>du dimensionnement et examen des nouvelles déclarations de conformité et de tout document utile</p>
+            <ul>
+              <li>Contrôle des caractéristiques avec conditions maximales admissibles (PS, TS) ;</li>
+              <li>Vérification des pressostats de sécurité HP identifiés comme accessoires de sécurité :</li>
+            </ul>
+            <ul class="disc">
+              <li>absence de trace d’intervention sur le dispositif de réglage (intégrité du plombage, du cadenassage,
+                du
+                point de cire, de vernis, …) ;</li>
+              <li>contrôle visuel (état des contacts électriques, état des capots)</li>
+            </ul>
+            <ul>
+              <li>Vérification des soupapes ;</li>
+            </ul>
+            <ul class="disc">
+              <li>intégrité du plombage ;</li>
+              <li>contrôle visuel de l’étanchéité (le cas échéant : présence du bouchon en plastique, absence de trace
+                d’huile, indicateur de décharge, …) ;</li>
+              <li>contrôle visuel de la non obturation de l’échappement ;</li>
+            </ul>
+            <p><span>Contrôles supplémentaires</span> (si au moins un équipement sans spécification de conception – CE)
+              Vérification de l’état du ou des condenseurs du
+              Contrôle de l’absence des gaz incondensables</p>
+            <p>Lors de l’inspection périodique, l’exploitant justifie que la plus ancienne des opérations marquées (*) a
+              moins de 12 mois.</p>
+
+            <h3>C. <u> REQUALIFICATION PERIODIQUE</u></h3>
+            <p><span>Périodicité :</span> 6/12 ans à définir</p>
+            <p><em>(Périodicité unique possible sur décision de l’exploitant)(Pour les tuyauteries, uniquement celles de
+                catégorie III)</em></p>
+            <p><span>Qualification pour le contrôle :</span> sous le contrôle d’un organisme habilité accrédité</p>
+            <p><span>Préparation de l’équipement :</span> selon le §A.3.6 - Sans dépose des revêtements – parties
+              amovibles retirées ; accès à tous les équipements et
+              accessoires de sécurité, accès et visibilité des marques d’identité ou plaques fabricant.</p>
+            <p>Les zones prises en glace en conditions normales de fonctionnement sont identifiées sur le circuit</p>
+            <p><em>(La liste des parties amovibles de l’isolation et les zones prises en glace en conditions normales de
+                fonctionnement sont identifiées sur un schéma du
+                circuit)</em></p>
+            <p>(Selon les dispositions du § A.3 + compléments)</p>
+            <span>Vérification de l’existence et de l’exactitude des documents du dossier d’exploitation</span>
+            <span>Contrôles visuels</span>
+            <p>Pour les équipements, leurs accessoires de sécurité et leurs accessoires sous pression</p>
+            <ul>
+              <li>tout défaut du calorifuge : glace en surface ; condensation avec ruissellement; chocs externes ;</li>
+              <li>tout défaut de la paroi de l’équipement non calorifugé : corrosion atmosphérique (absence de perte
+                d’épaisseur), chocs externes,
+                trace de fuite de fluide frigorigène ou d’huile ;</li>
+              <li>tout défaut du supportage de l’équipement ;</li>
+              <li>toute vibration anormale.</li>
+            </ul>
+            <span>Vérification de la réalisation des contrôles prévus au plan d’inspection</span>
+            <p><em>(Contrôles prévus lors de l’inspection de requalification)</em></p>
+            <p><em>(L’Annexe II liste les zones à contrôler pour réaliser un examen complet. Cette liste est, le cas
+                échéant, complétée par les contrôles relatifs à des modes
+                de dégradation non prévus par le présent CTP mais propres au système frigorifique concerné.)</em></p>
+            <span>
+              Epreuve hydrauli</span>
+            <p>e
+              La requalification périodique ne comprend pas d’épreuve hydrauli</p>
+            <span>.
+              Vérification des accessoires de sécur</span>
+            <ul>
+              <li>
+                Correspondance avec les types et modèles déclarés ou prévus à l’origine ou, en cas de remplacement des
+                accessoires de sécurité, justificat</li>
+              <p>
+                du dimensionnement et examen des nouvelles déclarations de conformité et de tout document utile</p>
+              <li>
+                Contrôle des caractéristiques avec conditions maximales admissibles (PS, TS)</li>
+              <li>
+                Vérification des pressostats de sécurité HP identifiés comme accessoires de sécurit</li>
+            </ul>
+            <ul class="disc">
+              <li>
+                o absence de trace d’intervention sur le dispositif de réglage (intégrité du plombage, du cadenassage,
+                du
+                point de cire, de vernis, …);</li>
+              <li>;
+                o contrôle visuel (état des contacts électriques, état des capots)</li>
+            </ul>
+            <ul>
+              <li>
+                Vérification des soupape</li>
+            </ul>
+            <ul class="disc">
+              <li>
+                intégrité du plombag</li>
+              <li>
+                contrôle visuel de l’étanchéité (le cas échéant : présence du bouchon en plastique, absence de trace
+                d’huile, indicateur de décharge, …);</li>
+              <li>
+                contrôle visuel de la non obturation de l’échappemen ;</li>
+              <li>
+                absence d’obstacles (cales de transport, bridages, …) susceptibles d’entraver le fonctionnement des
+                accessoires de sécurite;</li>
+              <li>
+                vérification des dispositions prises pour protéger le personnel des émissions dangereuses susceptibles
+                d’être rejetées par les accessoires de
+                sécurite.</li>
+            </ul>
+            <ul>
+              <li>
+                au retarage des soupapes de sécurité ou à leur remplacement par un accessoire de sécurité assurant la
+                même
+                protection;</li>
+            </ul>
+            <p>;
+              (Attention, clarifier si retarage ou remplacement systématique ou uniquement si PS.V> 3000 BAR.Litres –
+              art
+              22d -)</p>
+          </div>
+          <ul>
+            <li>
+              aux contrôles des chaines ou pressostats HP identifiés comme accessoires de sécurité, par : (méthodologie
+              à
+              imposer lors de l’élaboration du
+              PI et ne retenir que la méthode applicable au système frigorifique)</li>
+          </ul>
+          <ul class="disc">
+            <li>
+              augmentation de pression dans le circuit ou par un générateur externe de pression;</li>
+          </ul>
+          <p>ou;</p>
+          <ul class="disc">
+            <li>
+              abaissement du point de consigne, lorsque cela est possible, afin de vérifier son ou leur déclenchem</li>
+          </ul>
+          <p>ou;</p>
+          <ul class="disc">
+            <li>
+              pour les cas particuliers selon le § E.7</li>
+          </ul>
+          <p>7
+            <span> Contrôles supplémentaires</span> (si au moins un équipement sans spécification de conception – CE)
+          </p>
+          <p>
+            Vérification de l’état du ou des condenseurs du système frigorifique :</p>
+          <ul>
+            <li>
+              sur l’air : absence de colmatage des surfaces d’échange ; bon état de l’échangeur (*) (non écrasement des
+              ailettes…) ; </li>
+          </ul>
+          <p>
+            état de fonctionnement des ventilate</p>
+          <ul>
+            <li>
+              sur l’eau ou autre fluide de refroidissement : contrôle de l’écart de température ou de la perte de charge
+              entre l’entrée et</li>
+          </ul>
+          <p>
+            sortie par rapport aux données du fabricant.</p>
+          <p>
+            Contrôle de l’absence des gaz incondensables</p>
+          <p>s
+            Contrôle direct ou indirect d’absence de gaz incondensables ou inabsorbables dans le frigorigène gazeux du
+            côté haute pression du
+            système frigorifique sous pression (*)</p>
+          <p>.
+            <i>Lors de l’inspection périodique, l’exploitant justifie que la plus ancienne des opérations marquées (*) a
+              moins de 12 mois.</i>
+          </p>
+          <h3>D. <u> CONTROLES SPECIFIQUES</u></h3>
+          <p><span>Périodicité :</span> sans - Lors du remplacement ou de la dépose de l’isolation thermique
+          </p>
+          <p><span>Qualification pour le contrôle :</span> personnel compétent (traçabilité de la compétence)</p>
+          <p>.
+            Lors du remplacement ou de la dépose de l’isolation thermique, une personne habilitée procède à la vérificat
+          </p>
+          <p>
+            extérieure des équipements frigorifiques sous pression soumis au suivi en service rendus ainsi accessibles
+            (tuyauteries, récipients, etc.)</p>
+          <p>.
+            Les motivations de l'opération, l'opération elle-même et les constats faits lors de cette vérification
+            extérieure sont consignes dans le</p>
+          <p>
+            dossier d’exploitation, y compris l’absence d’observation particulière. Toute observation nécessitant une
+            traçabilité se fait au moyen</p>
+          <p>
+            d'une description détaillée des constatations faites (photo par exemple)</p>
+          <h3>E. <u>CRITERES D’ACCEPTATION :</u></h3>
+          <p><i>(Annexe 2 du CTP et valeurs numériques à reporter dans les documents annexés au PI)</i></p>
+          <p class="bigPara">
+            épaisseur mini de conception des équipements (selon dossier de fabrication d’origine ou reconstitué)
+          </p>
+          <p class="bigPara">
+            encrassement condenseur (en l'absence d'incondensables, écart ≤ 2K par rapport à la mesure du pincement
+            effectuée lors de la)
+          </p>
+          <p>
+            première inspection (pincement = pression de condensation du fluide frigorigène en degrés saturés- T° de
+            sortie du fluide secondaire,a
+            conditions équivalentes)</p>
+          <p class="bigPara">
+
+            fluide frigorifique pollué (Si la méthode utilisée consiste à piéger le fluide frigorigène dans une partie
+            du
+            circuit (condenseur
+          </p>
+          <p>
+            exemple) pour comparer l'écart entre la température saturée du fluide frigorigène (relation pression/
+            température au point milieu) et
+            température du fluide secondaire, cet écart doit être ≤ 2K)</p>
+          <p>
+            <i>(Pour ces deux points : méthodologie et points de mesure inscrites au PI)</i>
+          </p>
+        </div>
+  </form>
+  <button type="button" id="printBtn" class="btn btn-primary mx-auto" onclick="generatePDF()">Print PDF</button>
+  <script src="https://kit.fontawesome.com/17a6b59347.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+  <script>
+    function setCurrentDate() {
+      const currentDate = new Date().toISOString().split('T')[0];
+      const dateInputs = document.querySelectorAll('input[type="date"]');
+
+      dateInputs.forEach(input => {
+        input.value = currentDate;
+      });
+    }
+    // Set the current date for all date inputs when the page loads
+    document.addEventListener('DOMContentLoaded', setCurrentDate);
+    function ValidateFORM() {
+      const mainForm = document.getElementById("mainForm");
+      mainForm.style.display = "none";
+      const element = document.getElementById('myForm');
+      element.style.display = "block";
+      const formData = {};
+
+      // Get date input value
+      formData.dateVerification = document.getElementById('dateVerification').value;
+
+      // Get table input values for section 3
+      formData.section3 = {
+        equipmentConcerned: document.querySelector('[name="equipmentConcerned1"]').value,
+        prescription: document.querySelector('[name="prescription1"]').value,
+        measures: document.querySelector('[name="measures1"]').value,
+        criteria: document.querySelector('[name="criteria1"]').value,
+      };
+
+      // Get table input values for section 4
+      formData.section4 = {
+        equipmentConcerned: document.querySelector('[name="equipmentConcerned2"]').value,
+        degradationMode: document.querySelector('[name="degradationMode2"]').value,
+        origin: document.querySelector('[name="origin2"]').value,
+        consequences: document.querySelector('[name="consequences2"]').value,
+        effects: document.querySelector('[name="effects2"]').value,
+        location: [document.querySelector('[name="location2a"]').value, document.querySelector('[name="location2b"]').value],
+        measures: document.querySelector('[name="measures2"]').value,
+        criteria: document.querySelector('[name="criteria2"]').value,
+      };
+
+      // Get table input values for section 5
+      formData.section5 = {
+        criticalCondition: document.querySelector('[name="criticalCondition3"]').value,
+        measureReference: document.querySelector('[name="measureReference3"]').value,
+        measureLocation: [document.querySelector('[name="measureLocation31"]').value, document.querySelector('[name="measureLocation32"]').value, document.querySelector('[name="measureLocation33"]').value],
+        threshold: document.querySelector('[name="threshold3"]').value,
+        actions: document.querySelector('[name="actions3"]').value,
+      };
+
+      // Get file input values
+      formData.files = {
+        annexe: document.getElementById('fileAnnexe').files[0],
+        file1: document.getElementById('file1').files[0],
+        file2: document.getElementById('file2').files[0],
+      };
+
+      // Get checkbox values
+      formData.periodicity = document.getElementById('periodicity').checked;
+      formData.inspectionPeriodique = document.getElementById('inspectionPeriodique').checked;
+
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      const checkboxValues = {};
+
+      checkboxes.forEach(checkbox => {
+        checkboxValues[checkbox.id] = checkbox.checked;
+      });
+
+      document.getElementById('Équipementconcerné').value = formData.section3.equipmentConcerned;
+      document.getElementById('Prescriptionde').value = formData.section3.prescription;
+      document.getElementById('Mesurescompensatoires').value = formData.section3.measures;
+      document.getElementById('Critèresdacceptation').value = formData.section3.criteria;
+      // sec 4
+      document.getElementById('Equipementconcerné4').value = formData.section4.equipmentConcerned;
+      document.getElementById('Modesdedégradation4').value = formData.section4.degradationMode;
+      document.getElementById('Origine4').value = formData.section4.origin;
+      document.getElementById('Conséquences4').value = formData.section4.consequences;
+      document.getElementById('Effets4').value = formData.section4.effects;
+      document.getElementById('Localisationdeszonessensibles41').value = formData.section4.location[0];
+      document.getElementById('Localisationdeszonessensibles42').value = formData.section4.location[1];
+      document.getElementById('Mesuresdesurveillance').value = formData.section4.measures;
+      document.getElementById('Critèresdacceptation4').value = formData.section4.criteria;
+      //sec 5
+      document.getElementById('Conditionopératoirecritiquelimite5').value = formData.section5.criticalCondition;
+      document.getElementById('Référence5').value = formData.section5.measureReference;
+      document.getElementById('Localisationdelamesure51').value = formData.section5.measureLocation[0];
+      document.getElementById('Localisationdelamesure52').value = formData.section5.measureLocation[1];
+      document.getElementById('Localisationdelamesure53').value = formData.section5.measureLocation[2];
+      document.getElementById('Seuil5').value = formData.section5.threshold;
+      document.getElementById('Actions5').value = formData.section5.actions;
+
+    }
+    function generatePDF() {
+      const element = document.getElementById('myForm');
+      html2pdf(element, {
+        margin: 1,
+        filename: 'form.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 3 },
+        jsPDF: { unit: 'in', format: 'a3', orientation: 'landscape' }
+      });
+    }
+  </script>
+</body>
+
+</html>

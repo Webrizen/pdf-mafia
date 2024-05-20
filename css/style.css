@@ -1,0 +1,496 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+.border{
+   border: 1px solid black; 
+}
+.borderr{
+   border:  3px solid red;
+}
+.borderrr{
+    border: 2px solid black;
+}
+.mt5{
+    margin-top: 5px;
+}
+
+#pdfPreviewModal iframe {
+    width: 100%;
+    height: 500px;
+}
+
+.padR{
+    padding-right: 15px;
+}
+.mt20{
+  margin-top: 20px;
+}
+
+.pad0{
+    padding: 0px;
+}
+.pad10{
+    padding: 10px;
+}
+.pad20{
+    padding: 20px;
+}
+.container{
+    padding-bottom: 50px;
+}
+.head img{
+    width: 200px;
+ }
+ .heading{
+    width: 100%;
+    margin-inline: auto;
+    text-align: center;
+    color: #fff;
+    font-weight: 800;
+    background-color: #0070c0;
+ }
+ .first-section{
+    width: 95%;
+    border: 3px solid black;
+    margin-inline: auto;
+ }
+ .second{
+    margin-bottom: 20px;
+ }
+ .install{
+    border: 3px solid #1a1a1a;
+    height: 60px;
+    border-right: 1px solid black;
+    background-color: #0070c0;
+    color: #fff;
+}
+.install p{
+    text-align:right;
+    margin-top: 15px;
+}
+.box{
+    padding-inline: 20px;
+    height: 60px;
+    align-items: center;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    border: 3px solid #1a1a1a;
+    /* padding-bottom: 10px; */
+}
+.box p{
+    margin-top: 10px;
+    text-align: center;
+    /* padding-bottom: 10px; */
+}
+.third-section{
+    margin-top: 15px;
+    padding: 0px;
+}
+.third{
+    width: 100%;
+    background-color: #0070c0;
+    color: #fff;
+}
+.tableRow p{
+    text-align: center;
+   padding: 10px;
+   margin-top: 5px;
+   font-weight: bold;
+}
+.third input{
+    font-size: 14px;
+    font-weight: bold;
+    color: #1a1a1a;
+    width: 100%;
+    text-align: center;
+    height: 110px;
+}
+.nonBg{
+    background: #fff;
+    color: #1a1a1a;
+    font-weight: bold;
+    padding-left: 10px;
+}
+.lastBox input{
+    padding-block: 10px;
+    height: 100%;
+}
+.lastBox{
+    text-align: right;
+}
+.lastBox p{
+    margin-top: 5px;
+}
+.nothing{
+    width: 30px;
+}
+
+.fourth-section{
+    margin-top: 15px;
+    padding: 0px;
+}
+.complex-section{
+    margin-top: 5px;
+}
+.box1{
+    background-color: #0070c0;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+.boxp{
+    background-color: #0070c0;
+    color: #fff;
+    font-weight: 600;
+    text-align: right;
+}
+.box1 p{
+    margin-top: 9px;
+}
+.boxp p{
+    margin-top: 7px;
+}
+.box2{
+   height: 100%;
+    padding: 10px;
+    border: none;
+}
+.box2 input{
+ width: 100%;
+ height: 100%;
+ /* padding-left: 50px; */
+}
+
+.callender input{
+    width: 100%;
+    padding: 7px;
+    font-weight: 500;
+}
+.callender p{
+    width: 100%;
+    height: 28px;
+    font-weight: 500;
+    padding-top: 10px
+}
+.fourth{
+    width: 100%;
+    background-color: #0070c0;
+    color: #fff;
+}
+.fourth input{
+    font-size: 14px;
+    font-weight: bold;
+    color: #1a1a1a;
+    width: 100%;
+    text-align: center;
+    height: 60px;
+}
+.tableRowSec p{
+    text-align: center;
+   margin-top: 7px;
+   font-weight: bold;
+}
+.box3{
+    height: 41px;
+    padding: 0px;
+    border: none;
+    font-weight: bold;
+}
+.box3 input{
+ width: 100%;
+ height: 100%;
+}
+.box4{
+    padding-left: 0px;
+    text-align: right;
+    font-size: 13px !important;
+}
+.secondHeading{
+    width: 20%;
+}
+.secondPara h4{
+  font-weight: 800;
+  font-size: 13px;
+}
+.secondPara-desc{
+    border-left: 2px solid black;
+    font-size: 12px;
+}
+.secondHeading2 h6{
+    font-weight: 900;
+}
+.lineText li{
+    line-height: 15px;
+}
+.description b{
+  font-size: 13px;
+  font-weight: 800;
+}
+.description h6{
+    font-weight:800;
+    font-size: 1rem;
+}
+.desc-part p{
+    font-size: 12px;
+    font-weight: 500;
+}
+.fourth-section p{
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 0px;
+    padding-bottom: 5px;
+    margin-left: 10px;
+}
+.desc-box p{
+    padding-block: 7px;
+}
+.seven-section{
+    margin-top: -20px;
+}
+.checkBoxFirst{
+    display: flex;
+}
+.checkBoxFirst p{
+    margin-top: 14px;
+    padding-left: 10px;
+}
+.complexTable{
+    width: 100%;
+    margin-top: -10px;
+}
+.complexTable th{
+    text-align: center;
+    padding: 5px;
+    border: 2px solid black;
+}
+.complexTable td{
+    padding: 3px;
+    /* border: 2px solid black; */
+}
+.toughHeading{
+    width: 150px;
+}
+.toughHeading2{
+    width: 210px;
+}
+.toughHeading3{
+    width: 240px;
+}
+.toughHeading4{
+    width: 290px;
+}
+.toughHeadingX{
+    width: 70px;
+}
+.toughHeadingY{
+    width: 80px;
+}
+.toughHeadingZ{
+    width: 130px;
+}
+.textCenter{
+    text-align: center;
+}
+.BoldText{
+    font-weight: 400;
+}
+.empty{
+    height: 27px;
+    background-color: #0070c0;
+}
+.emptyQ{
+    border-left: 2px solid black;
+}
+.half-Desc p{
+    border: 2px solid black;
+  padding-block: 10px;
+}
+.huile{
+    border-right:2px solid black ;
+}
+.tableDesc{
+    width: 100%; 
+}
+.tableDesc th{
+    /* height: 70px; */
+    padding-inline: 5px;
+    font-size: 13px;
+    font-weight: 400;
+}
+.const {
+  padding-bottom: 8px;
+}
+.fullBox{
+    font-weight: 400;
+}
+.halfBox-data p{
+   margin-top: 10px;
+}
+.halfBox-data td{
+    padding-block: 0px;
+    height:40px;
+    font-weight: 500;
+}
+.fourthDesc p{
+  margin-top: 8px;
+  padding: 0px;
+}
+.fourthDesc{
+    border-top: 3px solid black;
+}
+.fourthTable{
+    width: 100%;
+}
+.fourthTable th{
+   text-align: center;
+   font-size: 16px;
+   font-weight: 500;
+   padding: 0px;
+}
+.flexData{
+    display: flex;
+    justify-content:space-evenly;
+}
+.complexTable1 td{
+    padding: 10px;
+}
+.complexTable1 p{
+    font-size: 16px; font-weight: 600;
+    text-align: center;
+}
+.descPara{
+    margin-top: 30px;
+}
+.descPara h4{
+ font-weight: 800;
+ font-weight: 25px;
+}
+.descPara p{
+ font-weight: 600;
+ font-size: 15px;
+}
+.box1 span{
+    font-weight: 200;
+}
+.tabhleHeight td{
+    height: 50px;
+    padding: 0px;
+}
+.tabhleHeight input{
+ width: 100%;
+ height: 100%;
+ border: none;
+}
+.flexInputBox{
+    height: 60px;
+    padding: 0px;
+}
+.flexInputBox1{
+    height: 45px;
+    padding: 0px;
+}
+.flexInputBox1 input{
+    padding-block: 22px;
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+}
+.flexInputBox input{
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+}
+.inspection{
+    text-align: center;
+    font-size: 12px;
+}
+.equipement th{
+ padding-block: 30px;
+}
+.neutral{
+    font-size: 16px;
+    text-align: center;
+    padding-inline:10px ;
+    background: #d0cece;
+}
+.ninthDesc{
+    border-top: 2px solid black;
+}
+.checkBoxSecond{
+    padding: 20px;
+    display: flex;
+    justify-content:space-evenly;
+}
+.checkBoxSecond2{
+    padding: 6px;
+    display: flex;
+    justify-content:space-evenly;
+    color: #1a1a1a;
+}
+.checkBoxSecond2 input{
+    width: 30px;
+}
+.headX p{
+    margin-left: 10px;
+}
+.headX h3{
+    font-size: 19px;
+    font-weight: bolder;
+
+}
+.headY{
+   margin-top: -5px;
+
+}
+
+.descPara span{
+    font-weight: 800;
+    font-size: 18px;
+}
+.checkContainerFirst{
+    font-size: 16px;
+    display: flex;
+    width: 340px;
+    justify-content: space-evenly;
+}
+.checkContainerFirst input{
+  width: 20px;
+}
+
+.checkContainerFirst label{
+  margin-right: 80px;
+  margin-top: 10px;
+}
+
+.heading2 h1{
+    text-align: center;
+    font-weight: 700;
+}
+.description h3{
+  font-weight: 700;
+}
+.description span{
+    font-size: 19px;
+  font-weight: 800;
+}
+.description p{
+    font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+}
+.bigPara{
+    padding-left: 20px;
+    line-height: 28px;
+}
+.disc li{
+ list-style:circle;
+}
+.description li{
+    font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
