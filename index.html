@@ -15,7 +15,7 @@
     <center class="head">
       <img src="img/logo_main.png" alt="" class="img-responsive" />
     </center>
-    <form onsubmit="event.preventDefault(); ValidateFORM();">
+    <form onsubmit="event.preventDefault(); ValidateFORM(); generatePDF();">
       <div class="form-group row">
         <label for="dateVerification" class="col-sm-2 col-form-label">Date de vérification</label>
         <div class="col-sm-10">
@@ -1991,7 +1991,6 @@
         </div>
         <div id="pdfContainer"></div>
   </form>
-  <button type="button" id="printBtn" class="btn btn-primary mx-auto" onclick="generatePDF()">Print PDF</button>
   <script src="https://kit.fontawesome.com/17a6b59347.js"></script>
   <script src="js/index.js"></script>
   <script src="js/jquery.min.js"></script>
