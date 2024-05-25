@@ -15,7 +15,7 @@
     <center class="head">
       <img src="img/logo_main.png" alt="" class="img-responsive" />
     </center>
-    <form onsubmit="event.preventDefault(); ValidateFORM(); generatePDF();">
+    <form onsubmit="event.preventDefault(); ValidateFORM();">
       <div class="form-group row">
         <label for="dateVerification" class="col-sm-2 col-form-label">Date de vérification</label>
         <div class="col-sm-10">
@@ -2093,6 +2093,7 @@
 
       displayPDFs(formData);
       console.log("displayPDFs - Done")
+      generatePDF();
     }
 
     function displayPDFs(formData) {
