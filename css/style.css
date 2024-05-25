@@ -494,3 +494,19 @@ body{
   line-height: 22px;
 }
 
+
+#pdfContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Adjust the gap between canvas elements */
+    justify-content: start;
+    margin-top: 40px; /* Center-align canvas elements horizontally */
+    align-items: flex-start; /* Align canvas elements to the top */
+  }
+
+  /* Style the canvas to make it responsive */
+  canvas {
+    max-width: 100%; /* Ensure canvas does not exceed container width */
+    height: auto; /* Automatically adjust canvas height */
+    border: 1px solid #ccc; /* Add border for better visualization */
+  }
