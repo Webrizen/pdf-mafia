@@ -2093,7 +2093,6 @@
 
       displayPDFs(formData);
       console.log("displayPDFs - Done")
-      generatePDF();
     }
 
     function displayPDFs(formData) {
@@ -2142,6 +2141,7 @@
               // Append canvas to container
               document.getElementById('pdfContainer').appendChild(canvas);
             });
+            generatePDF();
           });
         }
       }).catch(error => {
