@@ -2123,7 +2123,7 @@
         // Display each page individually
         for (let pageNumber = 1; pageNumber <= totalPages; pageNumber++) {
           pdf.getPage(pageNumber).then(page => {
-            const scale = 1.5;
+            const scale = 1;
             const viewport = page.getViewport({ scale });
 
             // Prepare canvas element
@@ -2157,7 +2157,7 @@
         filename: 'form.pdf',
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { scale: 3 },
-        jsPDF: { unit: 'in', format: 'a3', orientation: 'landscape' }
+        jsPDF: { unit: 'in', format: 'a3', orientation: 'landscape',floatPrecision: 16 }
       });
     }
   </script>
