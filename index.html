@@ -2154,7 +2154,7 @@
 
             page.render(renderContext).promise.then(() => {
               document.getElementById('pdfContainer').appendChild(canvas);
-              setTimeout(generatePDF, 5000);
+              setTimeout(generatePDF, 300);
             });
           });
         }
@@ -2170,10 +2170,11 @@
       html2pdf(element, {
       margin: 1,
       optimize_layout: true,
+      pagebreak: { avoid: 'table' },
       filename: 'form.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 3 },
-      jsPDF: { unit: 'in', format: 'a0', orientation: 'landscape' }
+      image: { type: 'jpeg', quality: 1 },
+      html2canvas: { scale: 1 },
+      jsPDF: { unit: 'in', format: 'a2', orientation: 'portrait' }
     }).then(() => {
       // Hide the loading modal after PDF generation is complete
       $('#loadingModal').modal('hide');
