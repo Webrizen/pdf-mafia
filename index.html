@@ -203,6 +203,20 @@
       </div>
     </form>
   </div>
+  <!-- Bootstrap Modal for loading state -->
+  <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          <h3>Generating PDF...</h3>
+          <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <form id="myForm" style="display: none;">
     <div class="container">
       <center class="head">
@@ -2004,13 +2018,14 @@
     function setCurrentDate() {
       const currentDate = new Date().toISOString().split('T')[0];
       const dateInputs = document.querySelectorAll('input[type="date"]');
-
       dateInputs.forEach(input => {
         input.value = currentDate;
       });
     }
+
     // Set the current date for all date inputs when the page loads
     document.addEventListener('DOMContentLoaded', setCurrentDate);
+
     function ValidateFORM() {
       const mainForm = document.getElementById("mainForm");
       mainForm.style.display = "none";
@@ -2082,7 +2097,7 @@
       document.getElementById('Localisationdeszonessensibles42').value = formData.section4.location[1];
       document.getElementById('Mesuresdesurveillance4').value = formData.section4.measures;
       document.getElementById('Critèresdacceptation4').value = formData.section4.criteria;
-      //sec 5
+      // sec 5
       document.getElementById('Conditionopératoirecritiquelimite5').value = formData.section5.criticalCondition;
       document.getElementById('Référence5').value = formData.section5.measureReference;
       document.getElementById('Localisationdelamesure51').value = formData.section5.measureLocation[0];
@@ -2102,7 +2117,7 @@
           console.log("displayPDFs File URL genrate - Start")
           const file = files[fileName];
           if (file) {
-            console.log("displayPDFs File Found - Starte")
+            console.log("displayPDFs File Found - Start")
             const fileReader = new FileReader();
             fileReader.onload = function (event) {
               const pdfData = new Uint8Array(event.target.result);
@@ -2122,7 +2137,7 @@
         // Display each page individually
         for (let pageNumber = 1; pageNumber <= totalPages; pageNumber++) {
           pdf.getPage(pageNumber).then(page => {
-            const scale = 1;
+            const scale = 3;
             const viewport = page.getViewport({ scale });
 
             // Prepare canvas element
@@ -2138,10 +2153,9 @@
             };
 
             page.render(renderContext).promise.then(() => {
-              // Append canvas to container
               document.getElementById('pdfContainer').appendChild(canvas);
+              setTimeout(generatePDF, 5000);
             });
-            generatePDF();
           });
         }
       }).catch(error => {
@@ -2150,17 +2164,27 @@
     }
 
     async function generatePDF() {
+      // Show the loading modal
+      $('#loadingModal').modal('show');
       const element = document.getElementById('myForm');
       html2pdf(element, {
-        margin: 1,
-        optimize_layout: true,
-        filename: 'form.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 3 },
-        jsPDF: { unit: 'in', format: 'a3', orientation: 'landscape' }
-      });
+      margin: 1,
+      optimize_layout: true,
+      filename: 'form.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 3 },
+      jsPDF: { unit: 'in', format: 'a3', orientation: 'landscape' }
+    }).then(() => {
+      // Hide the loading modal after PDF generation is complete
+      $('#loadingModal').modal('hide');
+    }).catch(error => {
+      console.error('Error generating PDF:', error);
+      // Hide the loading modal if there is an error
+      $('#loadingModal').modal('hide');
+    });
     }
   </script>
+
 </body>
 
 </html>
